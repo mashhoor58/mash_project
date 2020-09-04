@@ -10,7 +10,7 @@ class Routemap extends StatelessWidget {
         home:Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('ma'),
+          title: Text('ROUTE MAp'),
         ),
 body: Center(
   child:Image(
