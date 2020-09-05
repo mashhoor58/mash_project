@@ -1,10 +1,12 @@
 
 
+import 'package:bmi_calculator/map.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'SahaltWidget.dart';
 import 'IconContent.dart';
 import 'Routemap.dart';
+import 'map.dart';
 const activecolour=Color(0XFF1D1E33);
 const inactivecolour=Color(0XFF111328);
 enum Bottom {
@@ -40,9 +42,6 @@ class _InputPageState extends State<InputPage> {
         icon : Icon(Icons.search,
         ),
         onPressed: (){
-          var model;
-          model.isSearching=true;
-          model.refresh();
       },
 
 
@@ -98,19 +97,19 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(child:Row(
     children: <Widget>[
-    Expanded(
-      child:SahaltWidget(
-        onPress: (){
-          setState(() {
-            selectedBottom=Bottom.LOCKER;
-          });
-        },
-
+    Expanded( child:SahaltWidget(
+      onPress:(){
+        setState(() {
+          selectedBottom=Bottom.LOCKER;
+        });
+      },
       colour: selectedBottom==Bottom.LOCKER?activecolour:inactivecolour,
-      cChild:IconContent(icon:Icons.lock_outline,
-      label: 'LOCKER',
+      cChild: IconContent(icon:Icons.lock_outline,
+        label: 'LOCKER',
       ),
-      ),
+
+
+    ),
     ),
     Expanded(
       child:GestureDetector(
@@ -137,31 +136,37 @@ class _InputPageState extends State<InputPage> {
           Expanded(child:Row(
             children: <Widget>[
 
-              Expanded(
-                child:SahaltWidget(
-                  onPress: (){
-                    setState(() {
-                      selectedBottom=Bottom.FAVIROTE;
-
-                    });
-                  },
-                  colour: selectedBottom==Bottom.FAVIROTE?activecolour:inactivecolour,
-                    cChild: IconContent(icon: Icons.favorite,label: 'FAVIROTE',
-                    ),
+              Expanded(child:SahaltWidget(
+                onPress:(){
+                  setState(() {
+                    selectedBottom=Bottom.FAVIROTE;
+                  });
+                },
+                colour: selectedBottom==Bottom.FAVIROTE?activecolour:inactivecolour,
+                cChild: IconContent(icon:Icons.favorite,
+                  label: 'FAVIROTE',
                 ),
+
+
+              ),
               ),
               Expanded(
-    child:SahaltWidget(
-      onPress: (){
-        setState(() {
-          selectedBottom=Bottom.MAP;
-        });
-      },
-        colour:selectedBottom==Bottom.MAP?activecolour:inactivecolour,
-                cChild: IconContent(icon: Icons.map,label: 'MAP',
-    )
-    ),
-    ),
+                child:GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>map()
+                    ));
+                    setState(() {
+                      selectedBottom=Bottom.MAP;
+                    });
+                  },
+                  child: SahaltWidget(
+
+                      colour: selectedBottom==Bottom.MAP?activecolour:inactivecolour,
+                      cChild: IconContent(icon:Icons.map,label: 'MAP'
+                        ,)
+                  ),
+                ),
+              ),
     ],
     ),
     ),
