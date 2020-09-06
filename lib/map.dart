@@ -276,7 +276,7 @@ class mapState extends State<map> {
 Marker gramercyMarker = Marker(
   markerId: MarkerId('mash'),
   position: LatLng(24.7989534, 46.6977619),
-  infoWindow: InfoWindow(title: 'Gramercy Tavern'),
+  infoWindow: InfoWindow(title: 'station5'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -285,7 +285,7 @@ Marker gramercyMarker = Marker(
 Marker bernardinMarker = Marker(
   markerId: MarkerId('hesham'),
   position: LatLng(24.8075971, 46.5943986),
-  infoWindow: InfoWindow(title: 'Le Bernardin'),
+  infoWindow: InfoWindow(title: ' station4'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -293,7 +293,7 @@ Marker bernardinMarker = Marker(
 Marker blueMarker = Marker(
   markerId: MarkerId('abdul'),
   position: LatLng(24.7479140, 46.6171618),
-  infoWindow: InfoWindow(title: 'Blue Hill'),
+  infoWindow: InfoWindow(title: 'station3'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -304,7 +304,7 @@ Marker blueMarker = Marker(
 Marker newyork1Marker = Marker(
   markerId: MarkerId('station'),
   position: LatLng(24.742451, 46.005959),
-  infoWindow: InfoWindow(title: 'Los Tacos'),
+  infoWindow: InfoWindow(title: 'station2'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -312,7 +312,7 @@ Marker newyork1Marker = Marker(
 Marker newyork2Marker = Marker(
   markerId: MarkerId('station1'),
   position: LatLng(24.729640, 46.983510),
-  infoWindow: InfoWindow(title: 'Tree Bistro'),
+  infoWindow: InfoWindow(title: 'station1'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -320,7 +320,7 @@ Marker newyork2Marker = Marker(
 Marker newyork3Marker = Marker(
   markerId: MarkerId('station3'),
   position: LatLng(24.719109, 46.000183),
-  infoWindow: InfoWindow(title: 'Le Coucou'),
+  infoWindow: InfoWindow(title: 'station'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
