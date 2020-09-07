@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'input_page.dart';
-import 'Routemap.dart';
-import 'map.dart';
 
-void main() => runApp(sahalat());
+void main() => runApp(Sahalat());
 
 //test test test
 
-class sahalat extends StatelessWidget {
+class Sahalat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
