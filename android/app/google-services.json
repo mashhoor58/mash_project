@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705541341417",
+    "firebase_url": "https://sahlat-519da.firebaseio.com",
+    "project_id": "sahlat-519da",
+    "storage_bucket": "sahlat-519da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705541341417:android:1fcd858975e5bd3992f078",
+        "android_client_info": {
+          "package_name": "co.sahlat.bmicalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705541341417-j68vo6q9a9a3fchf54o67klftilee4qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAI_69u82hVEAAOAOPES6zo-uO_-R8AmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705541341417-j68vo6q9a9a3fchf54o67klftilee4qq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
