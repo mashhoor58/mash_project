@@ -1,9 +1,11 @@
+import 'package:bmi_calculator/eBook.dart';
 import 'package:bmi_calculator/map.dart';
 import 'package:flutter/material.dart';
 import 'SahaltWidget.dart';
 import 'IconContent.dart';
 import 'Routemap.dart';
 import 'map.dart';
+import 'eBook.dart';
 
 const activecolour = Color(0XFF1D1E33);
 const inactivecolour = Color(0XFF111328);
@@ -59,6 +61,10 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: SahaltWidget(
                     onPress: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return eBooklinks();
+                      }));
                       setState(() {
                         selectedBottom = Bottom.EBOOKS;
                       });

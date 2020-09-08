@@ -18,5 +18,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  url_launcher:
 flutter:
   uses-material-design: true
