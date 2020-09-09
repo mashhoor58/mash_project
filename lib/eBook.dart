@@ -5,9 +5,12 @@ import 'input_page.dart';
 
 class eBook {}
 
-String _launch = "https://www.google.com";
-String _laaaunch =
-    "https://docs.qgis.org/3.10/en/docs/training_manual/basic_map/symbology.html";
+String _launch = 'http://novelfreereadonline.com/the-two-towers/book-iii-chapter-1-128543';
+String _laaaunch = 'http://novelfreereadonline.com/the-hobbit/-chapter-1-an-unexpected-party-128586';
+String _laaunch = 'http://novelfreereadonline.com/the-man-with-the-golden-gun/page-1-991147';
+String _laaaaunch = 'http://novelfreereadonline.com/the-sea-wolves/page-1-124676';
+
+
 Future<void> _launchInBrowser(String url) async {
   if (await canLaunch(url)) {
     await launch(
@@ -29,25 +32,106 @@ class eBooklinks extends StatelessWidget {
         title: Text("Books"),
         centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            RaisedButton(
-              child: const Text("launch in App "),
-              onPressed: () {
-                _launchInBrowser(_launch);
-              },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+      Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+
+            child:Column(
+
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+
+                  child: RaisedButton(
+                    child: const Text("The Two Towers "),
+                    onPressed: () {
+                      _launchInBrowser(_launch);
+                    },
+                  ),
+
+
+
+                  ),
+               Expanded(
+
+                 child: Image(
+
+                   image: NetworkImage('http://novelfreereadonline.com/img/truyen/The-Two-Towers.jpg'),
+                     width: 50,
+                     height: 50,
+                     fit:BoxFit.fill,
+                 ),
+               ),
+],
+                ),
+
+                  ),
+              ],
+
             ),
-            RaisedButton(
-              child: const Text("data"),
-              onPressed: () {
-                _launchInBrowser(_laaaunch);
-              },
-            )
-          ],
-        ),
+
+          ),
+          Expanded(
+            child: Container(
+              child: RaisedButton(
+                child: const Text("The Hobbit "),
+                onPressed: () {
+                  _launchInBrowser(_laaaunch);
+                },
+              ),
+              margin: EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                color:Color(0xFF111328),
+                borderRadius: BorderRadius.circular(10.0),
+
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: RaisedButton(
+                child: const Text("The Man With the Golden Gun"),
+                onPressed: () {
+                  _launchInBrowser(_laaunch);
+                },
+              ),
+              margin: EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                color:Color(0xFF111328),
+                borderRadius: BorderRadius.circular(10.0),
+
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: RaisedButton(
+                child: const Text("The Sea Wolves"),
+                onPressed: () {
+                  _launchInBrowser(_laaaaunch);
+                },
+              ),
+              margin: EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                color:Color(0xFF111328),
+                borderRadius: BorderRadius.circular(10.0),
+
+              ),
+            ),
+          ),
+        ],
       ),
+
+
     );
+
   }
 }

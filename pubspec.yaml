@@ -14,6 +14,8 @@ dependencies:
   font_awesome_flutter: ^8.4.0
   google_maps_flutter: ^0.5.31
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -21,3 +23,32 @@ dev_dependencies:
   url_launcher:
 flutter:
   uses-material-design: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  assets:
+    - assets/
+

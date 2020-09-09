@@ -21,18 +21,18 @@ class MapState extends State<Map> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(FontAwesomeIcons.arrowLeft),
-            onPressed: () {
-              //
-            }),
+        centerTitle: true,
         title: Text("map"),
+
         actions: <Widget>[
           IconButton(
-              icon: Icon(FontAwesomeIcons.search),
+
+              icon: Icon(FontAwesomeIcons.arrowLeft),
               onPressed: () {
                 //
               }),
+
+
         ],
       ),
       body: Stack(
