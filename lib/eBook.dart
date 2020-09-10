@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'input_page.dart';
 
 class eBook {}
 
@@ -33,14 +32,9 @@ class eBooklinks extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-      Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+
+
           Expanded(
 
             child:Column(
@@ -48,37 +42,48 @@ class eBooklinks extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Expanded(
-
-                  child: RaisedButton(
-                    child: const Text("The Two Towers "),
-                    onPressed: () {
-                      _launchInBrowser(_launch);
-                    },
-                  ),
-
-
-
-                  ),
                Expanded(
 
-                 child: Image(
+                  child: Container(
 
-                   image: NetworkImage('http://novelfreereadonline.com/img/truyen/The-Two-Towers.jpg'),
-                     width: 50,
-                     height: 50,
-                     fit:BoxFit.fill,
+                    child: RaisedButton(
+                      child:ListTile(
+                    title:Text("The Two Towers ",
+                      textAlign: TextAlign.center,
+                       style:TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                      subtitle: Column(
+                    children: <Widget>[
+                       Text("Rate:*****",
+                         textAlign: TextAlign.end,
+                      style: TextStyle(color: Colors.white, fontSize: 20),),
+                       Text(
+                           "*****",
+                         textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                  ),
-               ),
-],
+                 ],
+                  ),
+                      ),
+                      onPressed: () {
+                        _launchInBrowser(_launch);
+                      },
+                      textColor: Colors.white,
+
+                    ),
+
+                    margin: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      color:  Color(0xFF0D47A1),
+                      borderRadius: BorderRadius.circular(10.0),
+
+                    ),
+                  ),
+
+
+
                 ),
 
-                  ),
-              ],
-
-            ),
-
-          ),
           Expanded(
             child: Container(
               child: RaisedButton(
@@ -91,6 +96,7 @@ class eBooklinks extends StatelessWidget {
               decoration: BoxDecoration(
                 color:Color(0xFF111328),
                 borderRadius: BorderRadius.circular(10.0),
+
 
               ),
             ),
@@ -129,7 +135,9 @@ class eBooklinks extends StatelessWidget {
           ),
         ],
       ),
-
+    ),
+  ],
+      ),
 
     );
 

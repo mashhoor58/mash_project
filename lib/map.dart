@@ -95,8 +95,8 @@ class MapState extends State<Map> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
-                  'https://www.google.com/search?q=w,v&safe=strict&sxsrf=ALeKk01SX6za5IjZBjYd1-s-5U7MzG-pyQ:1599419822310&tbm=isch&source=iu&ictx=1&fir=_Vi6x65g9AQc-M%252CJsXdS0L14GpYEM%252C_&vet=1&usg=AI4_-kRutIY2-CMt8AS1RRjDJYXaUxOOcQ&sa=X&ved=2ahUKEwjGwuuSn9XrAhWOzKQKHWl8DKkQ9QF6BAgJEEY&biw=767&bih=744&dpr=1.25#imgrc=_Vi6x65g9AQc-M',
-                  24.6412214,
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
+                      24.6412214,
                   46.5609625,
                   "mash house"),
             ),
@@ -104,7 +104,7 @@ class MapState extends State<Map> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
-                  'https://www.google.com/search?q=w,v&safe=strict&sxsrf=ALeKk01SX6za5IjZBjYd1-s-5U7MzG-pyQ:1599419822310&tbm=isch&source=iu&ictx=1&fir=_Vi6x65g9AQc-M%252CJsXdS0L14GpYEM%252C_&vet=1&usg=AI4_-kRutIY2-CMt8AS1RRjDJYXaUxOOcQ&sa=X&ved=2ahUKEwjGwuuSn9XrAhWOzKQKHWl8DKkQ9QF6BAgJEEY&biw=767&bih=744&dpr=1.25#imgrc=vSDaE-VaPL-_1M',
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
                   24.7224191,
                   46.6270967,
                   "king saud"),
@@ -113,7 +113,7 @@ class MapState extends State<Map> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
-                  'https://www.google.com/search?q=w,v&safe=strict&sxsrf=ALeKk01SX6za5IjZBjYd1-s-5U7MzG-pyQ:1599419822310&tbm=isch&source=iu&ictx=1&fir=_Vi6x65g9AQc-M%252CJsXdS0L14GpYEM%252C_&vet=1&usg=AI4_-kRutIY2-CMt8AS1RRjDJYXaUxOOcQ&sa=X&ved=2ahUKEwjGwuuSn9XrAhWOzKQKHWl8DKkQ9QF6BAgJEEY&biw=767&bih=744&dpr=1.25#imgrc=EP3oKD1cKU_txM',
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
                   24.8221445,
                   46.6547905,
                   "any thing"),
@@ -239,7 +239,7 @@ class MapState extends State<Map> {
         SizedBox(height: 5.0),
         Container(
             child: Text(
-          "American \u00B7 \u0024\u0024 \u00B7 1.6 mi",
+          "saudi \u00B7 \u0024\u0024 \u00B7 1.6 mi",
           style: TextStyle(
             color: Colors.black54,
             fontSize: 18.0,
@@ -270,12 +270,12 @@ class MapState extends State<Map> {
           _controller.complete(controller);
         },
         markers: {
-          newyork1Marker,
-          newyork2Marker,
-          newyork3Marker,
-          gramercyMarker,
-          bernardinMarker,
-          blueMarker
+          Marker4,
+          Marker5,
+          Marker6,
+          Marker1,
+          Marker2,
+          Marker3
         },
       ),
     );
@@ -292,27 +292,27 @@ class MapState extends State<Map> {
   }
 }
 
-Marker gramercyMarker = Marker(
-  markerId: MarkerId('mash'),
-  position: LatLng(24.7989534, 46.6977619),
-  infoWindow: InfoWindow(title: 'station5'),
+Marker Marker1 = Marker(
+  markerId: MarkerId('station'),
+  position: LatLng(24.6799742, 46.8119647),
+  infoWindow: InfoWindow(title: 'station'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
 );
 
-Marker bernardinMarker = Marker(
-  markerId: MarkerId('hesham'),
-  position: LatLng(24.8075971, 46.5943986),
-  infoWindow: InfoWindow(title: ' station4'),
+Marker Marker2 = Marker(
+  markerId: MarkerId('station1'),
+  position: LatLng(24.6398815, 46.7461001),
+  infoWindow: InfoWindow(title: ' station1'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
 );
-Marker blueMarker = Marker(
-  markerId: MarkerId('abdul'),
+Marker Marker3 = Marker(
+  markerId: MarkerId('station2'),
   position: LatLng(24.7479140, 46.6171618),
-  infoWindow: InfoWindow(title: 'station3'),
+  infoWindow: InfoWindow(title: 'station2'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
@@ -320,26 +320,26 @@ Marker blueMarker = Marker(
 
 //New York Marker
 
-Marker newyork1Marker = Marker(
-  markerId: MarkerId('station'),
-  position: LatLng(24.742451, 46.005959),
-  infoWindow: InfoWindow(title: 'station2'),
-  icon: BitmapDescriptor.defaultMarkerWithHue(
-    BitmapDescriptor.hueViolet,
-  ),
-);
-Marker newyork2Marker = Marker(
-  markerId: MarkerId('station1'),
-  position: LatLng(24.729640, 46.983510),
-  infoWindow: InfoWindow(title: 'station1'),
-  icon: BitmapDescriptor.defaultMarkerWithHue(
-    BitmapDescriptor.hueViolet,
-  ),
-);
-Marker newyork3Marker = Marker(
+Marker Marker4 = Marker(
   markerId: MarkerId('station3'),
-  position: LatLng(24.719109, 46.000183),
-  infoWindow: InfoWindow(title: 'station'),
+  position: LatLng(24.6018909, 46.6234543),
+  infoWindow: InfoWindow(title: 'station3'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueViolet,
+  ),
+);
+Marker Marker5 = Marker(
+  markerId: MarkerId('station4'),
+  position: LatLng(24.8212842, 46.7552359),
+  infoWindow: InfoWindow(title: 'station4'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueViolet,
+  ),
+);
+Marker Marker6 = Marker(
+  markerId: MarkerId('station5'),
+  position: LatLng(24.6872441, 46.5823725),
+  infoWindow: InfoWindow(title: 'station5'),
   icon: BitmapDescriptor.defaultMarkerWithHue(
     BitmapDescriptor.hueViolet,
   ),
