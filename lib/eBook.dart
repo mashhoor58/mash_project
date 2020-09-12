@@ -50,15 +50,16 @@ class eBooklinks extends StatelessWidget {
                       child:ListTile(
                     title:Text("The Two Towers ",
                       textAlign: TextAlign.center,
+
                        style:TextStyle(color: Colors.white, fontSize: 20),
                     ),
                       subtitle: Column(
                     children: <Widget>[
-                       Text("Rate:*****",
+                       Text("",
                          textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.white, fontSize: 20),),
                        Text(
-                           "*****",
+                           "",
                          textAlign: TextAlign.left,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                  ),

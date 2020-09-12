@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:google_map_polyline/google_map_polyline.dart';
+import 'package:permission/permission.dart';
 class Map extends StatefulWidget {
   @override
   MapState createState() => MapState();
@@ -11,9 +12,35 @@ class Map extends StatefulWidget {
 class MapState extends State<Map> {
   Completer<GoogleMapController> _controller = Completer();
 
-  @override
+  final Set<Polyline> polyline = {};
+
+
+  List<LatLng> routeCoords;
+  GoogleMapPolyline googleMapPolyline =
+  new GoogleMapPolyline(apiKey:"AIzaSyBrDH9boCTU1Z1kUv5SpnMfXqjOJLJlmkk");
+
+  getsomePoints() async {
+    var permissions =
+    await Permission.getPermissionsStatus([PermissionName.Location]);
+    if (permissions[0].permissionStatus == PermissionStatus.notAgain) {
+      var askpermissions =
+      await Permission.requestPermissions([PermissionName.Location]);
+    } else {
+      routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
+          origin: LatLng(26.6496234, 46.5569886),
+          destination: LatLng(26.8511517, 46.5607996),
+          mode: RouteMode.driving);
+    }
+  }
+  getaddressPoints() async {
+    routeCoords = await googleMapPolyline.getPolylineCoordinatesWithAddress(
+        origin: '4530 Taif Street,Riyadh 13751',
+        destination: 'Taif,Dhahrat Laban,Riyadh 13751',
+        mode: RouteMode.driving);
+  }
   void initState() {
     super.initState();
+    getaddressPoints();
   }
 
   double zoomVal = 5.0;
@@ -96,27 +123,45 @@ class MapState extends State<Map> {
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
                   'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
-                      24.6412214,
-                  46.5609625,
-                  "mash house"),
+                  24.6799742, 46.8119647,
+                  "station"),
             ),
             SizedBox(width: 10.0),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
                   'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
-                  24.7224191,
-                  46.6270967,
-                  "king saud"),
+                  24.7479140, 46.6171618,
+                  "station1"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _boxes(
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
+                  24.7479140, 46.6171618,
+                  "station2"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _boxes(
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
+                  24.6018909, 46.6234543,
+                  "station3"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _boxes(
+                  'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
+                  24.8212842, 46.7552359,
+                  "station4"),
             ),
             SizedBox(width: 10.0),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: _boxes(
                   'https://1.bp.blogspot.com/-ABm5hzJZ1RA/Wi43bMWEh8I/AAAAAAAAJ00/74ewF-6fRjEdNyhfU3rj0WmItJiC3WYLwCPcBGAYYCw/s640/download.jpg ',
-                  24.8221445,
-                  46.6547905,
-                  "any thing"),
+                  24.6872441, 46.5823725,
+                  "station5"),
             ),
           ],
         ),
@@ -264,6 +309,7 @@ class MapState extends State<Map> {
       width: MediaQuery.of(context).size.width,
       child: GoogleMap(
         mapType: MapType.normal,
+        polylines: polyline,
         initialCameraPosition:
             CameraPosition(target: LatLng(24.774265, 46.738586), zoom: 12),
         onMapCreated: (GoogleMapController controller) {
@@ -279,8 +325,22 @@ class MapState extends State<Map> {
         },
       ),
     );
-  }
 
+  }
+  void onMapCreated(GoogleMapController controller) {
+    setState(() {
+      _controller = controller as Completer<GoogleMapController>;
+
+      polyline.add(Polyline(
+          polylineId: PolylineId('route1'),
+          visible: true,
+          points: routeCoords,
+          width: 4,
+          color: Colors.blue,
+          startCap: Cap.roundCap,
+          endCap: Cap.buttCap));
+    });
+  }
   Future<void> _gotoLocation(double lat, double long) async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
