@@ -13,9 +13,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.4.0
   google_maps_flutter: ^0.5.31
-  geolocator: ^5.3.1
-  google_map_polyline:
-  permission:
+  geolocator: ^6.0.0
+
 
 
 

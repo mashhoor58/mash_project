@@ -2,45 +2,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_map_polyline/google_map_polyline.dart';
-import 'package:permission/permission.dart';
+import 'package:geolocator/geolocator.dart';
 class Map extends StatefulWidget {
   @override
-  MapState createState() => MapState();
+  _MapState createState() => _MapState();
 }
 
-class MapState extends State<Map> {
+class _MapState extends State<Map> {
+
+
   Completer<GoogleMapController> _controller = Completer();
 
-  final Set<Polyline> polyline = {};
 
 
-  List<LatLng> routeCoords;
-  GoogleMapPolyline googleMapPolyline =
-  new GoogleMapPolyline(apiKey:"AIzaSyBrDH9boCTU1Z1kUv5SpnMfXqjOJLJlmkk");
 
-  getsomePoints() async {
-    var permissions =
-    await Permission.getPermissionsStatus([PermissionName.Location]);
-    if (permissions[0].permissionStatus == PermissionStatus.notAgain) {
-      var askpermissions =
-      await Permission.requestPermissions([PermissionName.Location]);
-    } else {
-      routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
-          origin: LatLng(26.6496234, 46.5569886),
-          destination: LatLng(26.8511517, 46.5607996),
-          mode: RouteMode.driving);
-    }
-  }
-  getaddressPoints() async {
-    routeCoords = await googleMapPolyline.getPolylineCoordinatesWithAddress(
-        origin: '4530 Taif Street,Riyadh 13751',
-        destination: 'Taif,Dhahrat Laban,Riyadh 13751',
-        mode: RouteMode.driving);
-  }
   void initState() {
     super.initState();
-    getaddressPoints();
   }
 
   double zoomVal = 5.0;
@@ -58,6 +35,14 @@ class MapState extends State<Map> {
               onPressed: () {
                 //
               }),
+          IconButton(
+
+              icon: Icon(FontAwesomeIcons.search),
+              onPressed: ()async {
+                Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+                print(position);
+          },
+          ),
 
 
         ],
@@ -108,7 +93,7 @@ class MapState extends State<Map> {
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: LatLng(24.774265, 46.738586), zoom: zoomVal)));
   }
-
+@override
   Widget _buildContainer() {
     return Align(
       alignment: Alignment.bottomLeft,
@@ -171,9 +156,11 @@ class MapState extends State<Map> {
 
   Widget _boxes(String _image, double lat, double long, String restaurantName) {
     return GestureDetector(
-      onTap: () {
+      onTap: ()  {
         _gotoLocation(lat, long);
       },
+
+
       child: Container(
         child: new FittedBox(
           child: Material(
@@ -184,6 +171,8 @@ class MapState extends State<Map> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+
+
                   Container(
                     width: 180,
                     height: 200,
@@ -309,7 +298,6 @@ class MapState extends State<Map> {
       width: MediaQuery.of(context).size.width,
       child: GoogleMap(
         mapType: MapType.normal,
-        polylines: polyline,
         initialCameraPosition:
             CameraPosition(target: LatLng(24.774265, 46.738586), zoom: 12),
         onMapCreated: (GoogleMapController controller) {
@@ -326,20 +314,8 @@ class MapState extends State<Map> {
       ),
     );
 
-  }
-  void onMapCreated(GoogleMapController controller) {
-    setState(() {
-      _controller = controller as Completer<GoogleMapController>;
 
-      polyline.add(Polyline(
-          polylineId: PolylineId('route1'),
-          visible: true,
-          points: routeCoords,
-          width: 4,
-          color: Colors.blue,
-          startCap: Cap.roundCap,
-          endCap: Cap.buttCap));
-    });
+
   }
   Future<void> _gotoLocation(double lat, double long) async {
     final GoogleMapController controller = await _controller.future;
