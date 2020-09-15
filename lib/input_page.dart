@@ -6,7 +6,7 @@ import 'IconContent.dart';
 import 'Routemap.dart';
 import 'map.dart';
 import 'eBook.dart';
-
+import 'package:geolocator/geolocator.dart';
 
 
 const activecolour = Color(0XFF1D1E33);
@@ -164,7 +164,11 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Map()));
-                      setState(() {
+                      setState(()async {
+    Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    LocationPermission permission = await checkPermission();
+
+    print(position);
                         selectedBottom = Bottom.MAP;
                       });
                     },
