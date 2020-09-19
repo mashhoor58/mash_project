@@ -9,12 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  firebase_auth:
+  firebase_database:
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.4.0
   google_maps_flutter: ^0.5.31
   geolocator: ^6.0.0
-
+  location: ^3.0.2
 
 
 
@@ -25,6 +26,25 @@ dev_dependencies:
   url_launcher:
 flutter:
   uses-material-design: true
+
+
+  assets:
+    - ic_car_green.png
+    - ic_user.png
+    - ic_mail.png
+    - ic_phone.png
+    - ic_location_black.png
+    - ic_map_nav.png
+    - ic_notify.png
+    - ic_remove_x.png
+    - ic_menu.png
+    - ic_menu_help.png
+    - ic_menu_history.png
+    - ic_menu_notify.png
+    - ic_menu_percent.png
+    - ic_menu_user.png
+    - ic_pickup_hatchback.png
+    - ic_pickup_van.png
 
 
 

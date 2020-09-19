@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:location/location.dart';
 class Map extends StatefulWidget {
   @override
   _MapState createState() => _MapState();
@@ -9,10 +10,20 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
 
-
+Location _location = Location();
   Completer<GoogleMapController> _controller = Completer();
+Set<Marker> _markers = Set<Marker>();
+String googleAPIKey = "AIzaSyBrDH9boCTU1Z1kUv5SpnMfXqjOJLJlmkk";
+LocationData currentLocation;
+LocationData destinationLocation;
+
   void initState() {
     super.initState();
+
+  }
+  void _onMapCreated(GoogleMapController _cntrl){
+    _controller = _cntrl as Completer<GoogleMapController>;
+
   }
 
   double zoomVal = 5.0;
@@ -54,8 +65,8 @@ class _MapState extends State<Map> {
       child: IconButton(
           icon: Icon(FontAwesomeIcons.searchMinus, color: Color(0xff6200ee)),
           onPressed: (){
-          zoomVal--;
-          _minus(zoomVal);
+            zoomVal--;
+            _minus(zoomVal);
           }),
     );
   }
@@ -83,7 +94,7 @@ class _MapState extends State<Map> {
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: LatLng(24.774265, 46.738586), zoom: zoomVal)));
   }
-@override
+  @override
   Widget _buildContainer() {
     return Align(
       alignment: Alignment.bottomLeft,
@@ -195,89 +206,89 @@ class _MapState extends State<Map> {
           padding: const EdgeInsets.only(left: 8.0),
           child: Container(
               child: Text(
-            restaurantName,
-            style: TextStyle(
-                color: Color(0xff6200ee),
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold),
-          )),
+                restaurantName,
+                style: TextStyle(
+                    color: Color(0xff6200ee),
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold),
+              )),
         ),
         SizedBox(height: 5.0),
         Container(
             child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Container(
-                child: Text(
-              "4.1",
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                    child: Text(
+                      "4.1",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 18.0,
+                      ),
+                    )),
+                Container(
+                  child: Icon(
+                    FontAwesomeIcons.solidStar,
+                    color: Colors.amber,
+                    size: 15.0,
+                  ),
+                ),
+                Container(
+                  child: Icon(
+                    FontAwesomeIcons.solidStar,
+                    color: Colors.amber,
+                    size: 15.0,
+                  ),
+                ),
+                Container(
+                  child: Icon(
+                    FontAwesomeIcons.solidStar,
+                    color: Colors.amber,
+                    size: 15.0,
+                  ),
+                ),
+                Container(
+                  child: Icon(
+                    FontAwesomeIcons.solidStar,
+                    color: Colors.amber,
+                    size: 15.0,
+                  ),
+                ),
+                Container(
+                  child: Icon(
+                    FontAwesomeIcons.solidStarHalf,
+                    color: Colors.amber,
+                    size: 15.0,
+                  ),
+                ),
+                Container(
+                    child: Text(
+                      "(946)",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 18.0,
+                      ),
+                    )),
+              ],
+            )),
+        SizedBox(height: 5.0),
+        Container(
+            child: Text(
+              "saudi \u00B7 \u0024\u0024 \u00B7 1.6 mi",
               style: TextStyle(
                 color: Colors.black54,
                 fontSize: 18.0,
               ),
             )),
-            Container(
-              child: Icon(
-                FontAwesomeIcons.solidStar,
-                color: Colors.amber,
-                size: 15.0,
-              ),
-            ),
-            Container(
-              child: Icon(
-                FontAwesomeIcons.solidStar,
-                color: Colors.amber,
-                size: 15.0,
-              ),
-            ),
-            Container(
-              child: Icon(
-                FontAwesomeIcons.solidStar,
-                color: Colors.amber,
-                size: 15.0,
-              ),
-            ),
-            Container(
-              child: Icon(
-                FontAwesomeIcons.solidStar,
-                color: Colors.amber,
-                size: 15.0,
-              ),
-            ),
-            Container(
-              child: Icon(
-                FontAwesomeIcons.solidStarHalf,
-                color: Colors.amber,
-                size: 15.0,
-              ),
-            ),
-            Container(
-                child: Text(
-              "(946)",
+        SizedBox(height: 5.0),
+        Container(
+            child: Text(
+              "Closed \u00B7 Opens 17:00 Thu",
               style: TextStyle(
-                color: Colors.black54,
-                fontSize: 18.0,
-              ),
+                  color: Colors.black54,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold),
             )),
-          ],
-        )),
-        SizedBox(height: 5.0),
-        Container(
-            child: Text(
-          "saudi \u00B7 \u0024\u0024 \u00B7 1.6 mi",
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 18.0,
-          ),
-        )),
-        SizedBox(height: 5.0),
-        Container(
-            child: Text(
-          "Closed \u00B7 Opens 17:00 Thu",
-          style: TextStyle(
-              color: Colors.black54,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold),
-        )),
       ],
     );
   }
@@ -287,11 +298,18 @@ class _MapState extends State<Map> {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: GoogleMap(
+        myLocationEnabled: true,
+        compassEnabled: true,
+        tiltGesturesEnabled: false,
         mapType: MapType.normal,
         initialCameraPosition:
-            CameraPosition(target: LatLng(24.774265, 46.738586), zoom: 12),
+        CameraPosition(target: LatLng(24.774265, 46.738586), zoom: 10),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
+
+
+
+
         },
         markers: {
           Marker4,
@@ -314,6 +332,7 @@ class _MapState extends State<Map> {
       zoom: 15,
       tilt: 50.0,
       bearing: 45.0,
+
     )));
   }
 }

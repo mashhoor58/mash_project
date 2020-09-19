@@ -165,10 +165,10 @@ class _InputPageState extends State<InputPage> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Map()));
                       setState(()async {
-    Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    LocationPermission permission = await checkPermission();
+                        Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+                        LocationPermission permission = await checkPermission();
 
-    print(position);
+                        print(position);
                         selectedBottom = Bottom.MAP;
                       });
                     },
