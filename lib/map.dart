@@ -10,21 +10,32 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
 
-Location _location = Location();
   Completer<GoogleMapController> _controller = Completer();
-Set<Marker> _markers = Set<Marker>();
-String googleAPIKey = "AIzaSyBrDH9boCTU1Z1kUv5SpnMfXqjOJLJlmkk";
-LocationData currentLocation;
-LocationData destinationLocation;
+
 
   void initState() {
     super.initState();
-
+    _currentLocation();
   }
-  void _onMapCreated(GoogleMapController _cntrl){
-    _controller = _cntrl as Completer<GoogleMapController>;
 
+void _currentLocation() async {
+  final GoogleMapController controller = await _controller.future;
+  LocationData currentLocation;
+  var location = new Location();
+  try {
+    currentLocation = await location.getLocation();
+  } on Exception {
+    currentLocation = null;
   }
+
+  controller.animateCamera(CameraUpdate.newCameraPosition(
+    CameraPosition(
+      bearing: 0,
+      target: LatLng(currentLocation.latitude, currentLocation.longitude),
+      zoom: 17.0,
+    ),
+  ));
+}
 
   double zoomVal = 5.0;
   @override
