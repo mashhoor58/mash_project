@@ -53,7 +53,12 @@ void _currentLocation() async {
                 //
               }),
 
+          IconButton(
 
+              icon: Icon(FontAwesomeIcons.search),
+              onPressed: () {
+                //
+              }),
 
         ],
       ),
@@ -209,7 +214,7 @@ void _currentLocation() async {
     );
   }
 
-  Widget myDetailsContainer1(String restaurantName) {
+  Widget myDetailsContainer1(String stationname) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -217,7 +222,7 @@ void _currentLocation() async {
           padding: const EdgeInsets.only(left: 8.0),
           child: Container(
               child: Text(
-                restaurantName,
+                stationname,
                 style: TextStyle(
                     color: Color(0xff6200ee),
                     fontSize: 24.0,
