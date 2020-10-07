@@ -53,18 +53,7 @@ class eBooklinks extends StatelessWidget {
 
                        style:TextStyle(color: Colors.white, fontSize: 20),
                     ),
-                      subtitle: Column(
-                    children: <Widget>[
-                       Text("",
-                         textAlign: TextAlign.end,
-                      style: TextStyle(color: Colors.white, fontSize: 20),),
-                       Text(
-                           "",
-                         textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                 ),
-                 ],
-                  ),
+
                       ),
                       onPressed: () {
                         _launchInBrowser(_launch);
@@ -87,8 +76,16 @@ class eBooklinks extends StatelessWidget {
 
           Expanded(
             child: Container(
+
               child: RaisedButton(
-                child: const Text("The Hobbit "),
+                child:ListTile(
+                  title:Text("The Hobbit ",
+                    textAlign: TextAlign.center,
+
+                    style:TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+
+                ),
                 onPressed: () {
                   _launchInBrowser(_laaaunch);
                 },
@@ -104,8 +101,16 @@ class eBooklinks extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+
               child: RaisedButton(
-                child: const Text("The Man With the Golden Gun"),
+                child:ListTile(
+                  title:Text("The Man with the golden gun ",
+                    textAlign: TextAlign.center,
+
+                    style:TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+
+                ),
                 onPressed: () {
                   _launchInBrowser(_laaunch);
                 },
@@ -120,8 +125,16 @@ class eBooklinks extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+
               child: RaisedButton(
-                child: const Text("The Sea Wolves"),
+                child:ListTile(
+                  title:Text("The sea wolves ",
+                    textAlign: TextAlign.center,
+
+                    style:TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+
+                ),
                 onPressed: () {
                   _launchInBrowser(_laaaaunch);
                 },
